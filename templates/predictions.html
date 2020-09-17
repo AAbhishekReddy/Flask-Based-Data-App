@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h3>Input data</h3>
+    <br>
+    {{data | safe}}
+    <br>
+    {% for post in posts %}
+        <h3>The Prediction is:</h3>
+        <br>
+        <h4>{{ post }}</h4>
+    {% endfor %}
+    <br>
+    <br>
+    <h4><a href="/home">Go to Home page</a></h4>
+{% endblock content %}

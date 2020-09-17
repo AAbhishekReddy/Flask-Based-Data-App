@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container-fluid">
+        <form method="POST">
+            <h4><label>Choose the company symbol</label></h4>
+            <p><select id="symbol" name="company_symbol">
+                <option value="AMZN">Amazon</option>
+                <option value="AAPL">Apple</option>
+                <option value="MSFT">Microsoft</option>
+            </select></p>
+            <h4><label>Enter the opening value</label></h4>
+            <p><input type="number" name="open_val" value=100></p>
+            <h4><label>Enter the Highest Value</label></h4>
+            <p><input type="number" name="high_val" value=100></p>
+            <h4><label>Enter the Lowest Value</label></h4>
+            <p><input type="number" name="low_val" value=100></p>
+            <p><input type="submit" class="btn btn-primary value="PREDICT"></p>
+
+        </form>
+    </div>
+{% endblock content %}
