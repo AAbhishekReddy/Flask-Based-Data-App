@@ -1,9 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField, IntegerField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
 from dataapp.models import users
-
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username',
@@ -34,12 +33,3 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
-
-
-class NyseForm(FlaskForm):
-    myChoices = ["AMZN", "AAPL", "MSFT"]
-    company_symbol = SelectField(u'Company Symbol', choices = myChoices, validators = [DataRequired()])
-    open_val = IntegerField(u'Opening Value', validators = [DataRequired()])
-    high_val = IntegerField(u'Highest Value', validators = [DataRequired()])
-    low_val = IntegerField(u'Lowest Value', validators = [DataRequired()])
-    submit = SubmitField('PREDICT')

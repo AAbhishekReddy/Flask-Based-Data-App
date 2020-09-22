@@ -8,19 +8,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-<!-- 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" href="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js""></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript">
-        // $(document).ready( function () {
-        //     $('#nyse_table').DataTable();
-        //     console.log("Table created I guess")
-        // } );
-    </script>
     {% if title %}
         <title>Data App - {{ title }}</title>
     {% else %}
@@ -28,25 +20,24 @@
     {% endif %}
 </head>
 <body style="background-color: rgb(65, 65, 65);">
-    <div class="container" style="background-color: rgb(201, 201, 201);" align="center">
-        <h1 ><a href="/">FLASK BASED DATA APP</a></h1>
+    <div class="container jumbotron"  align="center">
+        <h1 class = "border-bottom" style="color: rgb(65, 65, 65);"><a href="{{ url_for('main.home') }}">FLASK BASED DATA APP</a></h1>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
             
-            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="/about">About</a></li>
+            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('main.about') }}">About</a></li>
 
             {% if current_user.is_authenticated %}
-                <li style="float:right"><a class="active" style="background-color: rgba(116, 114, 114, 0.514);" href="/logout">Logout</a></li>
+                <li style="float:right"><a class="active" style="background-color: rgba(116, 114, 114, 0.514);" href="{{ url_for('account.logout') }}">Logout</a></li>
                 <li style="float:right"><a class="active" style="background-color: rgb(175, 175, 175); color: navy;" href="#">{{current_user.name}}</a></li>
             {% else %}
-            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="/login">Login</a></li>
-            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="/register">Register</a></li>
+            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('account.login') }}">Login</a></li>
+            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('account.register') }}">Register</a></li>
             {% endif %}
 
             {% block username %} {% endblock username %}
         </ul>
-        <br>
     </div>
 
     <div class="container" align='center'>
