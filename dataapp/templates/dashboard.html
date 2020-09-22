@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class = "container-fluid" style="color: snow;">
+        {% if post %}
+            <table class="table table-hove" id = "nyse_table">
+                <tr>
+                    <th><p align="center">Symbol</p></th>
+                    <th><p align="center">Opening Value</p></th>
+                    <th><p align="center">Highest Value</p></th>
+                    <th><p align="center">Lowest Value</p></th>
+                    <th><p align="center">Prediction</p></th>
+                    <th><p align="center">Date and Time</p></th>
+                </tr>
+                {% for predict in post %}
+                    <tr>
+                        <th><p align="center">{{predict.company_symbol}}</p></th>
+                        <th><p align="center">{{predict.open_val}}</p></th>
+                        <th><p align="center">{{predict.high_val}}</p></th>
+                        <th><p align="center">{{predict.low_val}}</p></th>
+                        <th><p align="center">{{predict.close_prediction}}</p></th>
+                        <th><p align="center">{{predict.date_time}}</p></th>
+                        <!-- <p>{{predict.company_symbol}}</p> -->
+                    <!-- <p>{{predict.close_prediction}}</p> -->
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <br>
+            <br>
+            <h3 class = "border">No predictions Yet.</h3>
+        {% endif %}
+    </div>
+
+{% endblock content %}

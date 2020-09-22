@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block username %} 
+    {% if post %}
+        <li style="float:right"><a class="active" href="">{{name}}</a></li>
+    {% endif %}
+{% endblock username %}
+
+{% block content %}
+    {% if name %}
+        <h1>Cheers</h1>
+    {% else %}
+        <br>
+        <br>
+        <h2> Please Login and use the prediction engine to view all of your predictions. </h2>
+
+        <br>
+        <br>
+
+        <h4><a href="/login">Click here to Login</a></h4>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block username %} 
+    {% if post %}
+        <li style="float:right"><a class="active" href="">{{name}}</a></li>
+    {% endif %}
+{% endblock username %}
+
+{% block content %}
+    {% if name %}
+        <div class="container-fluid">
+            <form method="POST">
+                <h4><label>Choose the company symbol</label></h4>
+                <p><select id="symbol" name="company_symbol">
+                    <option value="AMZN">Amazon</option>
+                    <option value="AAPL">Apple</option>
+                    <option value="MSFT">Microsoft</option>
+                </select></p>
+                <h4><label>Enter the opening value</label></h4>
+                <p><input type="number" name="open_val" value=100></p>
+                <h4><label>Enter the Highest Value</label></h4>
+                <p><input type="number" name="high_val" value=100></p>
+                <h4><label>Enter the Lowest Value</label></h4>
+                <p><input type="number" name="low_val" value=100></p>
+                <p><input type="submit" class="btn btn-primary value="PREDICT"></p>
+
+            </form>
+        </div>
+    {% else %}
+        <br>
+        <br>
+        <h2> Please Login and use the prediction engine to view all of your predictions. </h2>
+
+        <br>
+        <br>
+
+        <h4><a href="/login">Click here to Login</a></h4>
+    {% endif %}
+{% endblock content %}

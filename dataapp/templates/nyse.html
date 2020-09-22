@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="content-section">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4" style="color: snow;">NYSE DATA</legend>
+                        <div class="form-group" style="color: snow;">
+                            {{ form.company_symbol.label(class="form-control-label") }}
+                            {% if form.company_symbol.errors %}
+                                {{ form.company_symbol(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.company_symbol.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.company_symbol(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group" style="color: snow;">
+                            {{ form.open_val.label(class="form-control-label") }}
+                            {% if form.open_val.errors %}
+                                {{ form.open_val(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.open_val.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.open_val(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group" style="color: snow;">
+                            {{ form.high_val.label(class="form-control-label") }}
+                            {% if form.high_val.errors %}
+                                {{ form.high_val(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.high_val.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.high_val(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group" style="color: snow;">
+                            {{ form.low_val.label(class="form-control-label") }}
+                            {% if form.low_val.errors %}
+                                {{ form.low_val(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.low_val.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.low_val(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div> 
+    
+{% endblock content %}

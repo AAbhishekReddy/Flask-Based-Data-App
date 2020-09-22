@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block username %} 
+    <!-- {% if post %} -->
+        <li style="float:right"><a class="active" href="">{{name}}</a></li>
+    <!-- {% endif %} -->
+{% endblock username %}
+
+{% block content %}
+    <br>
+    <div class = "container border-bottom mb-4">
+        <h4 style="width: 400px; height: 70px; align-items: center; padding: 5px; color: snow;">Click on the Image to Access the predictions</h4>
+    </div>
+    <br>
+    <br>
+    <div class = "jumbotron">
+        <div class = "container border-bottom mb-4">
+            <h4 class="bg-info" style="width: 300px; height: 40px; align-items: center; padding: 5px;">Regression Models</h4>
+        </div>
+        <br>
+        <div class = "row">
+            <div class = "col-md-6">
+                <p align="center" style="font-size: 20px;">New York Stock Exchange Dataset</p>
+                <a href="/nyse"><img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/AAbhishekReddy/data-app/master/support_models/images/nyse.jpg" alt="NYSE data" width="400" height="250"></a>
+            </div>
+            <div class = "col-md-6">
+                <p align="center" style="font-size: 20px;">Beer Review Dataset</p>
+                <a href="/beers"><img src="https://raw.githubusercontent.com/AAbhishekReddy/data-app/master/support_models/images/craft-beer.jpg" alt="NYSE data" width="400" height="250"></a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

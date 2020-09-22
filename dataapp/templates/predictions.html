@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class = "container-fluid" style="color: snow;">
+    <table class="table table-hove" id = "nyse_table">
+        <tr>
+            <th><p align="center">Symbol</p></th>
+            <th><p align="center">Opening Value</p></th>
+            <th><p align="center">Highest Value</p></th>
+            <th><p align="center">Lowest Value</p></th>
+            <th><p align="center">Prediction</p></th>
+        </tr>
+        <tr>
+        {% for predict in posts %}
+            <th><p align="center">{{predict}}</p></th>
+        {% endfor %}
+        </tr>
+    </table>
+</div>
+{% endblock content %}

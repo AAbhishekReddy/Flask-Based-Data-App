@@ -1,0 +1,115 @@
+<!-- {% extends "layout.html" %}
+
+{% block username %} 
+    <li style="float:right"><a class="active" href="">{{name}}</a></li>
+{% endblock username %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="container-fluid">
+                <br>
+                <h2 style="font-style: inherit; font-family: sans-serif;background-color: rgba(144, 183, 243, 0.493) ;">LOGIN</h2>
+                <br>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Enter Your Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Name">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+                    </div>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-primary">LOGIN</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="container-fluid">
+                <br>
+                <h2 style="font-style: inherit; font-family: sans-serif;background-color: rgba(144, 183, 243, 0.493) ;">REGISTER</h2>
+                <br>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Enter Your Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Age</label>
+                        <input type="number" class="form-control" id="exampleInputPassword1" name="age" placeholder="Age">
+                    </div>
+                    <button type="submit" class="btn btn-primary">REGISTER</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <h4><a href="/logout">Click here to logout</a></h4>
+    </div>
+{% endblock content %} -->
+
+
+<!-- New code -->
+
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            <small class="text-muted ml-2">
+                <a href="#">Forgot Password?</a>
+            </small>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
+        </small>
+    </div>
+{% endblock content %}
