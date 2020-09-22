@@ -1,22 +1,99 @@
 {% extends "layout.html" %}
 
-{% block username %} 
-    {% if post %}
-        <li style="float:right"><a class="active" href="">{{name}}</a></li>
-    {% endif %}
-{% endblock username %}
-
 {% block content %}
-    {% if name %}
-        <h1>Cheers</h1>
-    {% else %}
-        <br>
-        <br>
-        <h2> Please Login and use the prediction engine to view all of your predictions. </h2>
-
-        <br>
-        <br>
-
-        <h4><a href="{{url_for('account.login')}}">Click here to Login</a></h4>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="content-section">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4" style="color: snow;">BEERS REVIEW DATA</legend>
+                            <div class="form-group" style="color: snow;">
+                                {{ form.beer_name.label(class="form-control-label") }}
+                                {% if form.beer_name.errors %}
+                                    {{ form.beer_name(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.beer_name.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.beer_name(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group" style="color: snow;">
+                                {{ form.review_aroma.label(class="form-control-label") }}
+                                {% if form.review_aroma.errors %}
+                                    {{ form.review_aroma(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.review_aroma.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.review_aroma(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group" style="color: snow;">
+                                {{ form.review_pallete.label(class="form-control-label") }}
+                                {% if form.review_pallete.errors %}
+                                    {{ form.review_pallete(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.review_pallete.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.review_pallete(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group" style="color: snow;">
+                                {{ form.review_taste.label(class="form-control-label") }}
+                                {% if form.review_taste.errors %}
+                                    {{ form.review_taste(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.review_taste.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.review_taste(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group" style="color: snow;">
+                                {{ form.review_appearance.label(class="form-control-label") }}
+                                {% if form.review_appearance.errors %}
+                                    {{ form.review_appearance(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.review_appearance.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.review_appearance(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                            <div class="form-group" style="color: snow;">
+                                {{ form.beer_abv.label(class="form-control-label") }}
+                                {% if form.beer_abv.errors %}
+                                    {{ form.beer_abv(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.beer_abv.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.beer_abv(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div> 
 {% endblock content %}

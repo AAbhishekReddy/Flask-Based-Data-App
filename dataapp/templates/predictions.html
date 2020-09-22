@@ -2,19 +2,45 @@
 
 {% block content %}
 <div class = "container-fluid" style="color: snow;">
-    <table class="table table-hove" id = "nyse_table">
-        <tr>
-            <th><p align="center">Symbol</p></th>
-            <th><p align="center">Opening Value</p></th>
-            <th><p align="center">Highest Value</p></th>
-            <th><p align="center">Lowest Value</p></th>
-            <th><p align="center">Prediction</p></th>
-        </tr>
-        <tr>
-        {% for predict in posts %}
-            <th><p align="center">{{predict}}</p></th>
-        {% endfor %}
-        </tr>
-    </table>
+    {% if posts %}
+        <table class="table table-hove" id = "nyse_table">
+            <tr>
+                <th><p align="center">Symbol</p></th>
+                <th><p align="center">Opening Value</p></th>
+                <th><p align="center">Highest Value</p></th>
+                <th><p align="center">Lowest Value</p></th>
+                <th><p align="center">Prediction</p></th>
+            </tr>
+            <tr>
+            {% for predict in posts %}
+                <th><p align="center">{{predict}}</p></th>
+            {% endfor %}
+            </tr>
+        </table>
+    {% endif %}
+
+    {% if beers %}
+        <h3>BEER REVIEWS</h3>
+        <br>
+        <table class="table table-hove" id = "beers_table">
+            <tr>
+                <th><p align="center">Beer Name</p></th>
+                <th><p align="center">Aroma Review</p></th>
+                <th><p align="center">Pallete Review</p></th>
+                <th><p align="center">Taste Review</p></th>
+                <th><p align="center">Apprearence Review</p></th>
+                <th><p align="center">Beer ABV</p></th>
+                <th><p align="center">PREDICTION</p></th>
+                <th><p align="center">Date and Time</p></th>
+            </tr>
+            {% for beer in beers %}
+                <tr>
+                    {% for beer in beers %}
+                        <th><p align="center">{{ beer }}</p></th>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
 </div>
 {% endblock content %}

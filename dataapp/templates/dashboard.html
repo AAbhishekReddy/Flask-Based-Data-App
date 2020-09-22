@@ -3,13 +3,15 @@
 {% block content %}
     <div class = "container-fluid" style="color: snow;">
         {% if post %}
+            <h3>NYSE DATA</h3>
+            <br>
             <table class="table table-hove" id = "nyse_table">
                 <tr>
                     <th><p align="center">Symbol</p></th>
                     <th><p align="center">Opening Value</p></th>
                     <th><p align="center">Highest Value</p></th>
                     <th><p align="center">Lowest Value</p></th>
-                    <th><p align="center">Prediction</p></th>
+                    <th><p align="center">PREDICTION</p></th>
                     <th><p align="center">Date and Time</p></th>
                 </tr>
                 {% for predict in post %}
@@ -23,10 +25,35 @@
                     </tr>
                 {% endfor %}
             </table>
-        {% else %}
+        {% endif %}
+
+        {% if beers %}
+            <h3>BEER REVIEWS</h3>
             <br>
-            <br>
-            <h3 class = "border">No predictions Yet.</h3>
+            <table class="table table-hove" id = "beers_table">
+                <tr>
+                    <th><p align="center">Beer Name</p></th>
+                    <th><p align="center">Aroma Review</p></th>
+                    <th><p align="center">Pallete Review</p></th>
+                    <th><p align="center">Taste Review</p></th>
+                    <th><p align="center">Apprearence Review</p></th>
+                    <th><p align="center">Beer ABV</p></th>
+                    <th><p align="center">PREDICTION</p></th>
+                    <th><p align="center">Date and Time</p></th>
+                </tr>
+                {% for beer in beers %}
+                    <tr>
+                        <th><p align="center">{{beer.beer_name}}</p></th>
+                        <th><p align="center">{{beer.review_aroma}}</p></th>
+                        <th><p align="center">{{beer.review_pallete}}</p></th>
+                        <th><p align="center">{{beer.review_taste}}</p></th>
+                        <th><p align="center">{{beer.review_appearance}}</p></th>
+                        <th><p align="center">{{beer.beer_abv}}</p></th>
+                        <th><p align="center">{{beer.prediction_review}}</p></th>
+                        <th><p align="center">{{beer.date_time}}</p></th>
+                    </tr>
+                {% endfor %}
+            </table>
         {% endif %}
     </div>
 
