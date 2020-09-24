@@ -48,7 +48,7 @@ def beers():
             beer_db = beer_review(beer_data[0], beer_data[1], beer_data[2], beer_data[3], beer_data[4], beer_data[5], beer_data[6], user_id=current_user.id)
             db.session.add(beer_db)
             db.session.commit()
-            flash(f'ID: {beer_db}', 'info')
+            flash(f'ID: {beer_db.id}', 'info')
             flash(f'Successfully predicted. You can also view these predictions in the dashboard', 'success')
             print("Before Loading")
             return redirect(url_for("main.dashboard"))
