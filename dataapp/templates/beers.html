@@ -19,7 +19,8 @@
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.beer_name(class="form-control form-control-lg") }}
+                                    {{ form.beer_name(class="form-control form-control-lg", placeholder="British Empire") }}
+                                    <!-- {{ form.beer_name(placeholder="British Empire")}} -->
                                 {% endif %}
                             </div>
                             <div class="form-group" style="color: snow;">
@@ -32,7 +33,7 @@
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.review_aroma(class="form-control form-control-lg") }}
+                                    {{ form.review_aroma(class="form-control form-control-lg", placeholder="0 - 5") }}
                                 {% endif %}
                             </div>
                             <div class="form-group" style="color: snow;">
@@ -45,7 +46,7 @@
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.review_pallete(class="form-control form-control-lg") }}
+                                    {{ form.review_pallete(class="form-control form-control-lg", placeholder="0 - 5") }}
                                 {% endif %}
                             </div>
                             <div class="form-group" style="color: snow;">
@@ -58,7 +59,7 @@
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.review_taste(class="form-control form-control-lg") }}
+                                    {{ form.review_taste(class="form-control form-control-lg", placeholder="0 - 5") }}
                                 {% endif %}
                             </div>
                             <div class="form-group" style="color: snow;">
@@ -71,7 +72,7 @@
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.review_appearance(class="form-control form-control-lg") }}
+                                    {{ form.review_appearance(class="form-control form-control-lg", placeholder="0 - 5") }}
                                 {% endif %}
                             </div>
                             <div class="form-group" style="color: snow;">
@@ -84,7 +85,7 @@
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form.beer_abv(class="form-control form-control-lg") }}
+                                    {{ form.beer_abv(class="form-control form-control-lg", placeholder="0 - 100") }}
                                 {% endif %}
                             </div>
                     </fieldset>

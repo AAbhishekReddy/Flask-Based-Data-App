@@ -12,7 +12,7 @@ class NyseForm(FlaskForm):
 
 class BeersForm(FlaskForm):
     beer_name = StringField('Beer Name',
-                           validators=[DataRequired(), Length(min=2, max=20)])
+                           validators=[DataRequired(), Length(min=2, max=20)], description="Enter the Beer Name")
     review_aroma = IntegerField(u'Aroma Review', validators = [DataRequired(), NumberRange(min = 0, max = 5)])
     review_pallete = IntegerField(u'Pallete Review', validators = [DataRequired(), NumberRange(min = 0, max = 5)])
     review_taste = IntegerField(u'Taste Review', validators = [DataRequired(), NumberRange(min = 0, max = 5)])

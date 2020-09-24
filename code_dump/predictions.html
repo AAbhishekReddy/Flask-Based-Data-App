@@ -31,12 +31,13 @@
                 <th><p align="center">Apprearence Review</p></th>
                 <th><p align="center">Beer ABV</p></th>
                 <th><p align="center">PREDICTION</p></th>
-                <th><p align="center">Date and Time</p></th>
             </tr>
+
+            <!-- <p>beers</p> -->
             {% for beer in beers %}
                 <tr>
-                    {% for beer in beers %}
-                        <th><p align="center">{{ beer }}</p></th>
+                    {% for one_beer in beer %}
+                        <th><p align="center">{{ one_beer }}</p></th>
                     {% endfor %}
                 </tr>
             {% endfor %}
