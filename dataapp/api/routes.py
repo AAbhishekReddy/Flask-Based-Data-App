@@ -60,7 +60,7 @@ beers_show = api.model('Beers All predictions', {'beer_name' : fields.String('Br
  
 
 
-@api.route('/nyse')
+@api.route('/nyse_api')
 class nyse(Resource):
 
     @api.marshal_with(nyse_show, envelope='NYSE DATA')
@@ -78,7 +78,7 @@ class nyse(Resource):
         return {"close_val (predicted)" : predictions["prediction"]}
 
 
-@api.route('/beers')
+@api.route('/beers_api')
 class beers(Resource):
 
     @api.marshal_with(beers_show, envelope='Beer_data')
