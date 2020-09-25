@@ -26,6 +26,7 @@ def nyse_reg(nyse_data):
     arr = arr.astype("float64")
 
     nyse_data.append(reg.predict(arr.reshape(1,-1))[0])
+    print(nyse_data)
 
     return nyse_data
 
