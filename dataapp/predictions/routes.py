@@ -45,11 +45,4 @@ def beers():
 @predict.route('/tasks')
 @login_required
 def tasks_page():
-    status = []
-    for job in nyse_stats:
-        print(job.status)
-    print()
-    for job in beer_stats:
-        print(job.status)
-    print(nyse_stats, beer_stats)
     return render_template("tasks.html", nyse_stats = nyse_stats, beer_stats = beer_stats)

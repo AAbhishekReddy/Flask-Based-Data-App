@@ -1,0 +1,12 @@
+flask
+celery
+Flask-SQLAlchemy
+Flask-Bcrypt
+Flask-Login
+numpy
+Flask-WTF
+sklearn
+email-validator
+flask-restplus
+Werkzeug==0.16.1
+psycopg2

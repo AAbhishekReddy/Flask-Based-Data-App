@@ -10,11 +10,13 @@ beer_stats = []
 
 app = Flask(__name__)
 app.secret_key = "ghost1007"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1007@0.0.0.0:5432/data_app'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SWAGGER_UI_JSONEDITOR'] = True
-app.config['CELERY_BROKER_URL'] = 'amqp://localhost//'
-app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost'
+app.config['CELERY_BROKER_URL'] = 'amqp://rabbitmq//'
+# app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost'
+app.config['CELERY_RESULT_BACKEND'] = 'db+postgresql+psycopg2://postgres:1007@0.0.0.0:5432/data_app'
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
 

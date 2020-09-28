@@ -1,0 +1,44 @@
+version: '3'
+
+volumes:
+    pgdata:
+
+services: 
+    python: &python
+        build: .
+        volumes: 
+            - .:/app
+        ports: 
+            - 5000:5000
+        restart: always
+        depends_on:
+            - postgres
+            - rabbitmq
+            - celery_worker
+# database set up
+    postgres:
+        image: postgres:13.0
+        # restart: always
+        environment: 
+            POSTGRES_USER: postgres
+            POSTGRES_DB: data_app
+            POSTGRES_PASS: 1007
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+        environment:
+            - "POSTGRES_HOST_AUTH_METHOD=trust"
+        command: echo Here
+        # command: docker stack deploy -c stack.yml postgres
+        # command: I hope this worked.
+    # message queue for celery
+    rabbitmq:
+        image: rabbitmq:3.8-alpine
+    celery_worker:
+        <<: *python
+        command: celery -A dataapp.backend_tasks.tasks.celery worker --loglevel=INFO
+        ports: []
+        depends_on:
+        - rabbitmq
+        - postgres
