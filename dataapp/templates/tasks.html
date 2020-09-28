@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class = "container-fluid" style="color: snow;">
+        {% if nyse_stats or beer_stats %}
+            <h4>Refresh the page to check if the status has changed.</h4>
+            <p><a href="{{ url_for('predict.tasks_page') }}">CLICK HERE TO REFRESH</a></p>
+            {% if nyse_stats %}
+                <div class="container border" style="border: 3px;">
+                    <h3 style="border: 1px;">NYSE Jobs</h3>
+                    <br>
+                    <table class="table table-hove" id = "nyse_jobs">
+                        <thead>
+                            <tr>
+                                <th><p align="center">Task Id</p></th>
+                                <th><p align="center">Task Status</p></th>
+                            </tr>
+                        </thead>
+                        {% for stats in nyse_stats %}
+                            <tbody>
+                                <tr>
+                                    <th><p align="center">{{stats.task_id}}</p></th>
+                                    <th><p align="center">{{stats.status}}</p></th>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+                <script>
+                    $(function(){
+                    $("#nyse_jobs").dataTable();
+                    })
+                </script>
+            {% endif %}
+
+            <br>
+            <br>
+
+            {% if beer_stats %}
+                <div class="container border" style="border: 3px;">
+                    <h3 style="border: 1px;">Beer Review Jobs</h3>
+                    <br>
+                    <table class="table table-hove" id = "beer_jobs">
+                        <thead>
+                            <tr>
+                                <th><p align="center">Task Id</p></th>
+                                <th><p align="center">Task Status</p></th>
+                            </tr>
+                        </thead>
+                        {% for stats in beer_stats %}
+                            <tbody>
+                                <tr>
+                                    <th><p align="center">{{stats.task_id}}</p></th>
+                                    <th><p align="center">{{stats.status}}</p></th>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+                <script>
+                    $(function(){
+                    $("#beer_jobs").dataTable();
+                    })
+                </script>
+            {% endif %}
+        {% else %}
+                <h2>No submitted jobs in this session.</h2>
+        {% endif %}
+    </div>
+    
+{% endblock content %}

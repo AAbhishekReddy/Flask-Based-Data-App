@@ -4,6 +4,9 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+# package wide global variable
+nyse_stats = []
+beer_stats = []
 
 app = Flask(__name__)
 app.secret_key = "ghost1007"
@@ -11,6 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SWAGGER_UI_JSONEDITOR'] = True
 app.config['CELERY_BROKER_URL'] = 'amqp://localhost//'
+app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost'
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
