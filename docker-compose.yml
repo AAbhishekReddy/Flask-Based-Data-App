@@ -1,7 +1,7 @@
 version: '3'
 
 volumes:
-    pgdata:
+    db_data:
 
 services: 
     python: &python
@@ -12,33 +12,55 @@ services:
             - 5000:5000
         restart: always
         depends_on:
-            - postgres
+            - db
             - rabbitmq
             - celery_worker
+        networks: 
+            - default
+        command: python run.py
 # database set up
-    postgres:
-        image: postgres:13.0
-        # restart: always
-        environment: 
-            POSTGRES_USER: postgres
-            POSTGRES_DB: data_app
-            POSTGRES_PASS: 1007
-        volumes:
-            - pgdata:/var/lib/postgresql/data
-        ports:
-            - 5432:5432
-        environment:
-            - "POSTGRES_HOST_AUTH_METHOD=trust"
-        command: echo Here
-        # command: docker stack deploy -c stack.yml postgres
-        # command: I hope this worked.
+    # db:
+    #     image: postgres
+    #     restart: always
+    #     environment: 
+    #         POSTGRES_USER: "test"
+    #         POSTGRES_DB: "data_app"
+    #         POSTGRES_PASS: "test"
+    #     volumes:
+    #         - pgdata:/var/lib/postgresql/data
+    #     ports:
+    #         - 5432:5432
+    #     environment:
+    #         - "POSTGRES_HOST_AUTH_METHOD=trust"
+    #     command: echo Here
+    #     networks: 
+    #         - default
     # message queue for celery
+
+    db:
+        image: mysql:5.7
+        volumes:
+          - db_data:/var/lib/mysql
+        restart: always
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: data_app
+          MYSQL_USER: test
+          MYSQL_PASSWORD: test
+        networks: 
+        - default
+        depends_on:
+            - rabbitmq
+
     rabbitmq:
         image: rabbitmq:3.8-alpine
+        environment: 
+            RABBITMQ_DEFAULT_USER: "user"
+            RABBITMQ_DEFAULT_PASS: "password" 
     celery_worker:
         <<: *python
         command: celery -A dataapp.backend_tasks.tasks.celery worker --loglevel=INFO
         ports: []
         depends_on:
         - rabbitmq
-        - postgres
+        - db

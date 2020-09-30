@@ -10,18 +10,25 @@ beer_stats = []
 
 app = Flask(__name__)
 app.secret_key = "ghost1007"
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1007@0.0.0.0:5432/data_app'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@db/data_app'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SWAGGER_UI_JSONEDITOR'] = True
-app.config['CELERY_BROKER_URL'] = 'amqp://rabbitmq//'
-# app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost'
-app.config['CELERY_RESULT_BACKEND'] = 'db+postgresql+psycopg2://postgres:1007@0.0.0.0:5432/data_app'
+app.config['CELERY_BROKER_URL'] = 'amqp://user:password@rabbitmq:5672//'
+app.config['CELERY_RESULT_BACKEND'] = 'db+mysql://test:test@db/data_app'
+
 
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
 bcrypt = Bcrypt(app)
-db = SQLAlchemy(app)
+
+db = None
+try:
+    
+    db = SQLAlchemy(app)
+    print("Db created.")
+except Exception as e:
+        print(e)
+        db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'account.login'
 login_manager.login_message_category = 'info'

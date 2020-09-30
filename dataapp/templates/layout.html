@@ -22,24 +22,28 @@
 <body style="background-color: rgb(65, 65, 65);">
     <div class="container jumbotron"  align="center">
         <h1 class = "border-bottom" style="color: rgb(65, 65, 65);"><a href="{{ url_for('main.home') }}">FLASK BASED DATA APP</a></h1>
-        <ul>
-            <li><a href="{{ url_for('main.home') }}">Home</a></li>
-            <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url_for('predict.tasks_page') }}">Tasks</a></li>
-            <li><a href="/api/doc" style="background-color: rgb(212, 149, 77)">API (swagger docs)</a></li>
-            
-            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('main.about') }}">About</a></li>
+        <nav class="navbar navbar-default navbar-fixed-top"></nav>
+            <div class="container">
+                <ul>
+                    <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                    <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('predict.tasks_page') }}">Tasks</a></li>
+                    <li><a href="/api/doc" style="background-color: rgb(212, 149, 77)">API (swagger docs)</a></li>
+                    
+                    <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('main.about') }}">About</a></li>
 
-            {% if current_user.is_authenticated %}
-                <li style="float:right"><a class="active" style="background-color: rgba(116, 114, 114, 0.514);" href="{{ url_for('account.logout') }}">Logout</a></li>
-                <li style="float:right"><a class="active" style="background-color: rgb(175, 175, 175); color: navy;" href="#">{{current_user.name}}</a></li>
-            {% else %}
-            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('account.login') }}">Login</a></li>
-            <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('account.register') }}">Register</a></li>
-            {% endif %}
+                    {% if current_user.is_authenticated %}
+                        <li style="float:right"><a class="active" style="background-color: rgba(116, 114, 114, 0.514);" href="{{ url_for('account.logout') }}">Logout</a></li>
+                        <li style="float:right"><a class="active" style="background-color: rgb(175, 175, 175); color: navy;" href="#">{{current_user.name}}</a></li>
+                    {% else %}
+                    <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('account.login') }}">Login</a></li>
+                    <li style="float:right"><a class="active" style="background-color: rgb(48, 138, 211)" href="{{ url_for('account.register') }}">Register</a></li>
+                    {% endif %}
 
-            {% block username %} {% endblock username %}
-        </ul>
+                    {% block username %} {% endblock username %}
+                </ul>
+            </div>
+        </nav>
     </div>
 
     <div class="container" align='center'>

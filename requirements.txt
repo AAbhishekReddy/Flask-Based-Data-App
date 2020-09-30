@@ -10,3 +10,5 @@ email-validator
 flask-restplus
 Werkzeug==0.16.1
 psycopg2
+redis
+Flask-MySQLdb
